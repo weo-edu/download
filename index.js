@@ -11,6 +11,7 @@ function download(url, cb) {
   request
     .get(url)
     .buffer(true)
+    .parse(request.parse.image)
     .end(function(err, res) {
       if(err) return cb(err)
       if(res.status !== 200) return cb(new Error('Download failed ' + res.status))
